@@ -6,22 +6,18 @@ import openai
 import os
 from dotenv import load_dotenv
 
-# Load environment variables from .env file
 load_dotenv()
 
-# Initialize FastAPI app
 app = FastAPI()
 
-# Configure CORS for your Chrome extension
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["chrome-extension://bcnbiojdaejdoikimnebjmoagjpcngok", "https://youtube-video-chat.onrender.com/process"],
+    allow_origins=["chrome-extension://bcnbiojdaejdoikimnebjmoagjpcngok", "https://youtube-video-chat.onrender.com"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
-# OpenAI API key from environment variable
 openai.api_key = os.getenv("OPENAI_API_KEY")
 
 class VideoQueryRequest(BaseModel):
@@ -40,14 +36,15 @@ def home():
 async def process_query(request: VideoQueryRequest):
     video_id = request.video_id
     query = request.query
+    print(f"Received request: video_id={video_id}, query={query}")
 
-    # Fetch YouTube transcript
+    # fetch YouTube transcript
     try:
         transcript = get_transcript(video_id)
     except Exception as e:
         raise HTTPException(status_code=404, detail="Transcript not found")
 
-    # Get answer from OpenAI
+    # get answer from OpenAI
     answer, timestamp = get_answer(transcript, query)
     timestamp_url = f"https://www.youtube.com/watch?v={video_id}&t={int(timestamp)}s" if timestamp is not None else None
 
@@ -58,10 +55,10 @@ async def ask_followup(request: FollowupRequest):
     video_id = request.video_id
     followup_query = request.followup_query
 
-    # Get transcript
+    # get transcript
     transcript = get_transcript(video_id)
 
-    # Get follow-up answer
+    # get follow-up answer
     answer, timestamp = get_answer(transcript, followup_query)
     timestamp_url = f"https://www.youtube.com/watch?v={video_id}&t={int(timestamp)}s" if timestamp is not None else None
 
