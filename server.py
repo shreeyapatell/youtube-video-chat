@@ -15,7 +15,7 @@ app = FastAPI()
 # Configure CORS for your Chrome extension
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["chrome-extension://bcnbiojdaejdoikimnebjmoagjpcngok"],  # Replace with your Chrome extension's ID
+    allow_origins=["chrome-extension://bcnbiojdaejdoikimnebjmoagjpcngok", "https://youtube-video-chat.onrender.com"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
