@@ -32,6 +32,10 @@ class FollowupRequest(BaseModel):
     video_id: str
     followup_query: str
 
+@app.get("/")
+def home():
+    return "Welcome"
+
 @app.post("/process/")
 async def process_query(request: VideoQueryRequest):
     video_id = request.video_id
