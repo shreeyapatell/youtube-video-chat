@@ -1,0 +1,27 @@
+{
+  "manifest_version": 3,
+  "name": "YouTube Transcript Search",
+  "version": "1.0",
+  "description": "Fetch and search YouTube video transcripts using OpenAI and Pinecone.",
+  "permissions": [
+    "activeTab",
+    "storage",
+    "scripting"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "chat_tube.png",
+      "48": "chat_tube.png",
+      "128": "chat_tube.png" 
+    }
+  },
+  "host_permissions": [
+    "https://www.youtube.com/*",
+    "https://api.openai.com/*",
+    "https://controller.pinecone.io/*"
+  ]
+}

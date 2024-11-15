@@ -1,0 +1,4 @@
+fast[api]
+python-dotenv
+openai
+youtube_transcript_api
