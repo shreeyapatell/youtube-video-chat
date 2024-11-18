@@ -8,6 +8,8 @@ document.getElementById('submit').addEventListener('click', async () => {
   
         // Use the live URL instead of localhost
         // http://127.0.0.1:8000
+        // https://youtube-video-chat.onrender.com/
+        // uvicorn server:app --reload
         const response = await fetch('https://youtube-video-chat.onrender.com/process', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
