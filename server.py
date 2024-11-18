@@ -32,7 +32,7 @@ class FollowupRequest(BaseModel):
 def home():
     return "Welcome"
 
-@app.post("/process/")
+@app.post("/process")
 async def process_query(request: VideoQueryRequest):
     video_id = request.video_id
     query = request.query
@@ -50,7 +50,7 @@ async def process_query(request: VideoQueryRequest):
 
     return {"answer": answer, "timestamp": timestamp, "timestamp_url": timestamp_url}
 
-@app.post("/ask_followup/")
+@app.post("/ask_followup")
 async def ask_followup(request: FollowupRequest):
     video_id = request.video_id
     followup_query = request.followup_query
