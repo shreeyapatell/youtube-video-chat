@@ -66,7 +66,9 @@ async def ask_followup(request: FollowupRequest):
 
 def get_transcript(video_id):
     """Fetch the YouTube transcript."""
+    print("getting transcript...")
     transcript = YouTubeTranscriptApi.get_transcript(video_id)
+    print("transcript success")
     return transcript
 
 def get_answer(transcript, query):
