@@ -1,67 +1,103 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
-/* Global styles */
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #f4f7f6;
+    font-family: 'Roboto', sans-serif;
+    background-color: #1d1d1d;
     margin: 0;
-    padding: 20px;
     width: 300px;
     color: #333;
-  }
-  
-  /* Header styling */
-  h1 {
-    font-size: 20px;
-    color: #4a90e2;
+}
+
+.container {
+    background-color: #1d1d1d;
+    padding: 20px;
+}
+
+h1 {
+    font-size: 24px;
+    color: #EE3E41;
     margin-bottom: 15px;
     text-align: center;
-  }
-  
-  /* Input fields */
-  input[type="text"] {
+}
+
+input[type="text"] {
     width: 100%;
     padding: 10px;
     margin: 10px 0;
-    border: 1px solid #ccc;
     border-radius: 5px;
     box-sizing: border-box;
     font-size: 14px;
-  }
-  
-  /* Button styling */
-  button {
+}
+
+button {
     width: 100%;
     padding: 12px;
-    background-color: #4a90e2;
+    background-color: #EE3E41;
     border: none;
     border-radius: 5px;
     color: white;
     font-size: 16px;
     cursor: pointer;
     transition: background-color 0.3s ease;
-  }
-  
-  button:hover {
-    background-color: #357abf;
-  }
-  
-  /* Results display */
-  #results {
+}
+
+button:hover {
+    background-color: #ca2a2d;
+}
+
+#results {
     margin-top: 20px;
-    background-color: #fff;
-    border: 1px solid #ddd;
+    background-color: #f3f3f3;
     padding: 10px;
     border-radius: 5px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     font-size: 14px;
     color: #444;
-  }
-  
-  /* Style each individual result */
-  #results p {
+}
+
+#results p {
     margin: 10px 0;
     line-height: 1.5;
-  }
+}
 
-  
+.loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.loading-circle {
+    width: 40px;
+    height: 40px;
+    border: 5px solid #f3f3f3;
+    border-top: 5px solid #EE3E41;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+#auto-fetch-message {
+    color: #f3f3f3;
+    background-color: #EE3E41;
+    font-size: 12px;
+    margin-top: 5px;
+    text-align: center;
+}
+
+@keyframes highlightSlide {
+  0% { background-position: 200% 0; } /* Red gradient fully visible */
+  70% { background-position: 100% 0; } /* Red reaches the end */
+  100% { background-position: 0 0; background: white; } /* Fully white */
+}
+
+.highlight {
+  background: linear-gradient(to left, #EE3E41, white, #EE3E41);
+  background-size: 200% 100%;
+  animation: highlightSlide 2s cubic-bezier(0.1, 0.1, 0.58, 1) forwards;
+}
+

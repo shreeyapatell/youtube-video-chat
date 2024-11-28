@@ -42,7 +42,7 @@ async def process_query(request: VideoQueryRequest):
     try:
         transcript = get_transcript(video_id)
     except Exception as e:
-        raise HTTPException(status_code=404, detail="Transcript not found")
+        raise HTTPException(status_code=500, detail="Transcript failure")
 
     # get answer from OpenAI
     answer, timestamp = get_answer(transcript, query)
